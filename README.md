@@ -11,7 +11,7 @@ Reemplaza `tu_token_de_acceso_a_Hugging_Face` por tu token de acceso a la API de
 ## Ejecución
 Para ejecutar el proyecto, sigue los siguientes pasos:
 1. Instala las dependencias con `npm install`.  
-2. Ejecuta el proyecto con `npm run start` o `node src/index.js`.
+2. Ejecuta el proyecto con `npm run dev`, esto compilara el código y ejecutará la aplicación en la línea de comandos. También se puede ejecutar `npm run build` para compilar el código y luego `npm start` para ejecutar la aplicación en la línea de comandos. El `npm run build` es necesario si se realizan cambios en el código.
 3. Ingresa el texto que deseas convertir a voz y presiona Enter.
 4. Escucha el audio generado en tiempo real.
 
@@ -24,12 +24,12 @@ El proyecto utiliza las siguientes dependencias:
 
 ## Personalización
 Para modificar la velocidad de reproducción del audio, puedes ajustar los siguientes parámetros en el código:
-- [`sampleRate`](./src/audio.service.js): Este parámetro controla la velocidad de reproducción del audio. Un valor más alto aumenta la velocidad y viceversa.
-- [`bitRate`](./src/textToSpeech.service.js): Este parámetro controla la calidad del audio generado. Un valor más alto aumenta la calidad y viceversa.
+- [`sampleRate`](./src/audio.service.ts): Este parámetro controla la velocidad de reproducción del audio. Un valor más alto aumenta la velocidad y viceversa.
+- [`bitRate`](./src/textToSpeech.service.ts): Este parámetro controla la calidad del audio generado. Un valor más alto aumenta la calidad y viceversa.
 
 Para modificar el modelo de voz utilizado, puedes ajustar el siguiente parámetro en el código:
-- [`model`](./src/audio.service.js): Este parámetro controla el modelo de voz utilizado para generar el audio. Puedes consultar los modelos disponibles en[Hugging Face](https://huggingface.co/models?pipeline_tag=text-to-speech&sort=downloads).
+- [`model`](./src/audio.service.ts): Este parámetro controla el modelo de voz utilizado para generar el audio. Puedes consultar los modelos disponibles en [Hugging Face](https://huggingface.co/models?pipeline_tag=text-to-speech&sort=downloads).
 
 ## Aclaraciones
-- El modelo actual utilizado para la generación de audio es [`facebook/mms-tts-spa`](https://huggingface.co/facebook/mms-tts-spa), pero puedes cambiarlo según tus preferencias.
+- El modelo actual utilizado para la generación de audio es [`facebook/mms-tts-spa`](https://huggingface.co/facebook/mms-tts-spa) y es para audio en español. Puedes cambiar el modelo según el idioma que desees.
 - Este proyecto es solo un ejemplo básico de cómo utilizar la API de Hugging Face para la síntesis de voz. Puedes personalizarlo y extenderlo según tus necesidades.
