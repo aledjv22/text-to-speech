@@ -1,6 +1,6 @@
 import { HfInference } from '@huggingface/inference';
 import { config } from './config.js';
-import { saveAudio, playAudio } from './audioService.js';
+import { saveAudio, playAudio } from './audio.service.js';
 
 export async function generateAudioFromText(texto) {
   const hf = new HfInference(config.hfAccessToken);

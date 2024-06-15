@@ -1,5 +1,5 @@
 import readline from 'readline';
-import { saveTextToSpeech } from './textToSpeechService.js';
+import { saveTextToSpeech } from './textToSpeech.service.js';
 
 const rl = readline.createInterface({
   input: process.stdin,
