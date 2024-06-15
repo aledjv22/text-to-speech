@@ -2,7 +2,7 @@ import { HfInference } from '@huggingface/inference';
 import { config } from './config.js';
 import { saveAudio, playAudio } from './audio.service.js';
 
-export async function generateAudioFromText(texto) {
+export async function generateAudioFromText(texto: string) {
   const hf = new HfInference(config.hfAccessToken);
   const respuesta = await hf.textToSpeech({
     inputs: texto,
@@ -11,7 +11,7 @@ export async function generateAudioFromText(texto) {
   return Buffer.from(await respuesta.arrayBuffer());
 }
 
-export async function saveTextToSpeech(texto) {
+export async function saveTextToSpeech(texto: string) {
   try {
     const bufferAudio = await generateAudioFromText(texto);
     const rutaTemporal = 'output_temp.flac';

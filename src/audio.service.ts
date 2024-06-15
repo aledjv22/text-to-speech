@@ -2,11 +2,11 @@ import fs from 'fs';
 import Speaker from 'speaker';
 import ffmpeg from 'fluent-ffmpeg';
 
-export function saveAudio(buffer, filePath) {
+export function saveAudio(buffer: Buffer, filePath: string) {
   fs.writeFileSync(filePath, buffer);
 }
 
-export function playAudio(filePath) {
+export function playAudio(filePath: string) {
   if (fs.existsSync(filePath)) {
     const stream = fs.createReadStream(filePath);
     const speaker = new Speaker({
