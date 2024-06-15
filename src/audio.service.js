@@ -2,13 +2,13 @@ import fs from 'fs';
 import Speaker from 'speaker';
 import ffmpeg from 'fluent-ffmpeg';
 
-export function saveAudio(buffer, rutaArchivo) {
-  fs.writeFileSync(rutaArchivo, buffer);
+export function saveAudio(buffer, filePath) {
+  fs.writeFileSync(filePath, buffer);
 }
 
-export function playAudio(rutaArchivo) {
-  if (fs.existsSync(rutaArchivo)) {
-    const stream = fs.createReadStream(rutaArchivo);
+export function playAudio(filePath) {
+  if (fs.existsSync(filePath)) {
+    const stream = fs.createReadStream(filePath);
     const speaker = new Speaker({
       channels: 2,
       bitDepth: 16,
@@ -25,6 +25,9 @@ export function playAudio(rutaArchivo) {
 
     speaker.on('close', () => {
       console.log('Reproducción finalizada.');
+      if (fs.existsSync(filePath)) {
+        fs.unlinkSync(filePath);
+      }
     });
   } else {
     console.error('El archivo de audio no existe o no se creó correctamente.');
