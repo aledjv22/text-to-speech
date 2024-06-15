@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import fs from 'fs';
 import Speaker from 'speaker';
 import ffmpeg from 'fluent-ffmpeg';
+import readline from 'readline';
 
 dotenv.config();
 
@@ -44,9 +45,8 @@ function playAudio(rutaArchivo) {
   }
 }
 
-async function saveTextToSpeech() {
+async function saveTextToSpeech(texto) {
   try {
-    const texto = 'Hola, como estas? Mi nombre es Alejandro y tengo veintitrés años.';
     const bufferAudio = await generateAudioFromText(texto);
     const rutaTemporal = 'output_temp.flac';
     saveAudio(bufferAudio, rutaTemporal);
@@ -57,4 +57,13 @@ async function saveTextToSpeech() {
   }
 }
 
-saveTextToSpeech();
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+rl.question('Ingrese el texto a reproducir: ', (texto) => {
+  saveTextToSpeech(texto).then(() => {
+    rl.close();
+  });
+});
